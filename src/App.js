@@ -1,25 +1,51 @@
-import logo from './logo.svg';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css'
+import React from 'react';
+import Button from './component/Button';
+import Add from './component/Add';
+import Pay from './component/Pay';
+import List from './component/List';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+class App extends React.Component {
+  constructor() {
+    super()
+
+    this.state = {
+      activeTab: "add",
+      items: []
+    }
+
+    this.handleButtonClick = this.handleButtonClick.bind(this)
+  }
+
+  handleButtonClick(str) {
+    console.log(str)
+    this.setState({ activeTab : str })
+  }
+
+
+    render () {
+      
+      return (
+    <div>
+      <h1>Bakery</h1>
+      <Button
+      children="Add"
+      handleClick={this.handleButtonClick}
+
+      />
+      <Button
+      children="Pay"
+      handleClick={this.handleButtonClick}
+      />
+      <Button
+      children="List"
+      handleClick={this.handleButtonClick}
+      />
     </div>
   );
 }
+}
+
 
 export default App;
